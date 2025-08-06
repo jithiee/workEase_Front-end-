@@ -39,14 +39,14 @@ const Register = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
         {/* Image Section */}
-        <div className="md:w-1/2 bg-gradient-to-br from-uniqueBlue to-indigo-700 p-8 text-white flex flex-col justify-between">
+        <div className="md:w-1/2 bg-[#0059e7] p-8 text-white flex flex-col justify-between">
           <div className="text-center md:text-left">
             <h2 className="text-3xl font-bold mb-2">Streamline Your Workforce</h2>
             <p className="text-blue-100 mb-6">Efficient employee booking and management platform</p>
           </div>
           
-          <div className="hidden md:block relative h-9/12 rounded-lg overflow-hidden shadow-lg">
-            <div className="absolute inset-0 bg-blue-800 opacity-20"></div>
+          <div className="hidden md:block relative h-9/12 rounded-lg overflow-hidden ">
+            <div className="absolute  opacity-20"></div>
             <img 
               src={registerImage} 
               alt="Employee booking illustration" 

@@ -29,7 +29,7 @@ const HeaderText = () => {
 
                 {/* Secondary Button with Icon */}
                 <button className="flex items-center cursor-pointer gap-2 border border-gray-300 text-black font-semibold py-3 px-6 rounded-full transition duration-300 hover:bg-gray-100 focus:outline-none">
-                    See our plans
+                    Booking Here
                     <span className="flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
