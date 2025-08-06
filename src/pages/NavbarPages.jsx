@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Home from '../features/home/Home';
 import Navbar from '../layouts/navbar/Navbar';
 
-const LandingPage = () => {
+const NavbarPages = () => {
 
   const [active, setActive] = useState('Home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +10,9 @@ const LandingPage = () => {
   const toggleMenu = () => {
       setIsMenuOpen(!isMenuOpen);
     };
-
   return (
     <div>
-
+      
     <Navbar
     active={active}
     setActive={setActive}
@@ -24,9 +22,11 @@ const LandingPage = () => {
     toggleMenu={toggleMenu}
 
     /> 
-    <Home/>
     </div>
   );
 }
 
-export default LandingPage;
+export default NavbarPages;
+
+
+

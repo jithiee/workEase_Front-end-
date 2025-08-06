@@ -1,5 +1,5 @@
 import React from "react"
-import LandingPage from "./pages/landingPage"
+
 
 function App() {
 
@@ -7,7 +7,14 @@ function App() {
   return (
     <>
   
-    <LandingPage/>
+   <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage/>} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
+      </Routes>
+    </Router>
+    
     </>
   )
 }
