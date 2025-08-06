@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import logo from './assets/logo1.png';
 
-const Navbar = () => {
-  const [active, setActive] = useState('Home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navbarItems = ['Home', 'About', 'Contact', 'Login'];
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+const Navbar = ({active ,setActive ,isMenuOpen , setIsMenuOpen , navbarItems ,  toggleMenu }) => {
+  
 
   return (
-    <div className='flex justify-center mt-5'>
+    <div className='flex justify-center mt-5 sticky top-2 z-50' >
       <nav className='w-[700px] h-[70px] bg-[#EFEFEF] rounded-full flex items-center justify-between px-8 relative'>
-        <img src={logo} alt="logo" className='w-32 h-auto' />
+        <img src={logo} alt="logo" className='w-32 h-auto' loading='lazy' />
         
         {/* Desktop Menu */}
         <ul className='hidden sm:flex gap-8 font-semibold'>
@@ -25,7 +19,7 @@ const Navbar = () => {
             >
               {item}
               <span
-                className={`absolute bottom-0 left-0 h-[2px] bg-[#0a8ecf] transition-all duration-500 
+                className={`absolute bottom-0 left-0 h-[2px] bg-uniqueBlue transition-all duration-500 
                 ${active === item ? 'w-full' : 'w-0 group-hover:w-full'}`}
               ></span>
             </li>
