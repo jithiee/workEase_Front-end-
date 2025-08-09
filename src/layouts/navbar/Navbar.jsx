@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import logo from './assets/logos2.png';
 import logo from './assets/logo1.png';
 
 const Navbar = ({active ,setActive ,isMenuOpen , setIsMenuOpen , navbarItems ,  toggleMenu }) => {

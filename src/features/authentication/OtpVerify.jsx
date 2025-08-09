@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaLock, FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import otpImage from './assets/otpv.svg'; // Replace with your image path
+// import otpImage from './assets/otpv.svg'; // Replace with your image path
+import otpImage from './assets/otp2.svg'; // Replace with your image path
 
 const OtpVerify = () => {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);

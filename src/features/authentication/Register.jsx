@@ -44,16 +44,16 @@ const Register = () => {
             <h2 className="text-3xl font-bold mb-2">Streamline Your Workforce</h2>
             <p className="text-blue-100 mb-6">Efficient employee booking and management platform</p>
           </div>
-          
+
           <div className="hidden md:block relative h-9/12 rounded-lg overflow-hidden ">
             <div className="absolute  opacity-20"></div>
-            <img 
-              src={registerImage} 
-              alt="Employee booking illustration" 
+            <img
+              src={registerImage}
+              alt="Employee booking illustration"
               className="w-full h-full object-cover"
             />
           </div>
-          
+
           <div className="mt-8 space-y-4">
             <div className="flex items-center space-x-4">
               <div className="bg-blue-500 bg-opacity-30 p-3 rounded-full">
@@ -64,7 +64,7 @@ const Register = () => {
                 <p className="text-blue-100 text-sm">Book employees with just a few clicks</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <div className="bg-blue-500 bg-opacity-30 p-3 rounded-full">
                 <FaUserTie className="text-xl" />
@@ -85,6 +85,28 @@ const Register = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* username Field */}
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <FaUser className="text-gray-400" />
+              </div>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                placeholder="Username"
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-200"
+                required
+                minLength={4}
+                maxLength={20}
+                pattern="[a-zA-Z0-9]+"
+                title="Username should only contain letters and numbers"
+              />
+              {errors.username && (
+                <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+              )}
+            </div>
             {/* Email Field */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">

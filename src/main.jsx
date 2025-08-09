@@ -15,6 +15,7 @@ import LoginPage from './pages/auth/LoginPage.jsx';
 import RegisterPage from './pages/auth/RegisterPage.jsx';
 import OtpverifyPage from './pages/auth/OtpverifyPage.jsx';
 import BookingPage from './pages/BookingPage.jsx';
+import EmployeeDash from './features/dashboard/employee/EmployeeDash.jsx';
 
 
 const router = createBrowserRouter(
@@ -31,6 +32,10 @@ const router = createBrowserRouter(
        {/* <Route path='about' element={<About />} /> */}
         {/* <Route path='posts' element={<Post />} />
         <Route path='contact' element={<Contact />} /> */}
+    </Route>
+
+    <Route path='/employeedashboard' element={<EmployeeDash/>} >  
+
     </Route>
 
 
