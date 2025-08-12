@@ -59,7 +59,7 @@ const EmployeeSection = () => {
   ];
 
   return (
-    <section className="py-8 px-4 md:px-8 lg:px-16 bg-gradient-to-b ">
+    <section className=" px-4 md:px-8 lg:px-16 bg-gradient-to-b ">
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-28">
@@ -83,7 +83,7 @@ const EmployeeSection = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="mb-36">
+        <div className="mb-32">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme{
-    --color-uniqueBlue: #0a8ecf
-    /* --color-uniqueBlue:  #3045e0 */
+    /* --color-uniqueBlue: #0a8ecf */
+    --color-uniqueBlue: #4c93ff
+
 }
+/* --color-uniqueBlue:  #3045e0 */
