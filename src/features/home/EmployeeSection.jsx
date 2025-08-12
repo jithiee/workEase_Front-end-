@@ -82,27 +82,60 @@ const EmployeeSection = () => {
           </motion.p>
         </div>
 
-        {/* Features Grid */}
-        <div className="mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-center">
-                  {feature.icon}
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
+    {/* Features Grid */}
+<div className="mb-32">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    {features.map((feature, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        whileHover={{ y: -8, scale: 1.02 }}
+        className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+      >
+        <div className="flex flex-col items-center text-center">
+          
+          {/* Icon background wrapper */}
+          <div className="relative inline-flex items-center justify-center w-20 h-20 mb-6">
+            {/* Blob background */}
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#E6F0FF"
+                d="M50 0C77.6 0 100 22.4 100 50s-22.4 50-50 50S0 77.6 0 50 22.4 0 50 0z"
+              />
+            </svg>
+
+            {/* Decorative stars */}
+            <span className="absolute -top-1 -left-1 text-blue-400 text-sm">✦</span>
+            <span className="absolute -bottom-1 -right-1 text-blue-400 text-sm">✦</span>
+
+            {/* Actual icon */}
+            <span className="relative z-10 text-blue-600 w-8 h-8 flex items-center justify-center">
+              {feature.icon}
+            </span>
           </div>
+
+          {/* Title */}
+          <h3 className="text-lg font-semibold mb-3 text-gray-800 leading-snug">
+            {feature.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
+            {feature.description}
+          </p>
         </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
         {/* Employee Journey */}
         <div className="mb-20">
