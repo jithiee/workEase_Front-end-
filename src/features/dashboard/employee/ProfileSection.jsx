@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { FiPlus, FiX } from 'react-icons/fi';
-import { FaStar } from 'react-icons/fa';
+import React, { useState, useRef } from 'react';
+import { FiPlus, FiX, FiCamera } from 'react-icons/fi';
 
 const ProfileSection = () => {
   const [profile, setProfile] = useState({
@@ -10,7 +9,56 @@ const ProfileSection = () => {
     rate: '$90/hr',
     location: 'San Francisco, CA',
     skills: ['UI/UX Design', 'Figma', 'Prototyping', 'User Research', 'Wireframing'],
+    availability: 'available',
+    profileImage: 'https://randomuser.me/api/portraits/men/75.jpg'
   });
+
+  const [newSkill, setNewSkill] = useState('');
+  const fileInputRef = useRef(null);
+
+  const availabilityOptions = [
+    { value: 'available', label: 'Available', color: 'bg-green-100 text-green-800' },
+    { value: 'unavailable', label: 'Unavailable', color: 'bg-red-100 text-red-800' }
+  ];
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProfile({...profile, profileImage: e.target.result});
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
+  const addSkill = () => {
+    if (newSkill.trim() && !profile.skills.includes(newSkill.trim())) {
+      setProfile({
+        ...profile,
+        skills: [...profile.skills, newSkill.trim()]
+      });
+      setNewSkill('');
+    }
+  };
+
+  const removeSkill = (skillToRemove) => {
+    setProfile({
+      ...profile,
+      skills: profile.skills.filter(skill => skill !== skillToRemove)
+    });
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addSkill();
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -18,23 +66,35 @@ const ProfileSection = () => {
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-1/3">
-            <div className="relative">
+            <div className="relative mx-auto w-32 h-32">
               <img 
-                src="https://randomuser.me/api/portraits/men/75.jpg" 
+                src={profile.profileImage} 
                 alt="Profile" 
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
+                className="w-full h-full rounded-full object-cover border-4 border-white shadow-md"
               />
-              <button className="absolute bottom-2 right-2 md:right-6 bg-indigo-600 text-white p-2 rounded-full">
-                <FiPlus />
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImageUpload}
+                accept="image/*"
+                className="hidden"
+              />
+              <button 
+                onClick={triggerFileInput}
+                className="absolute bottom-0 right-0 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors"
+              >
+                <FiCamera size={16} />
               </button>
             </div>
             <div className="text-center mt-4">
               <h3 className="text-xl font-bold">{profile.name}</h3>
               <p className="text-gray-600">{profile.title}</p>
-              <div className="flex justify-center mt-2">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="text-yellow-400" />
-                ))}
+              
+              {/* Availability Status Badge */}
+              <div className="mt-4">
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${availabilityOptions.find(opt => opt.value === profile.availability)?.color}`}>
+                  {availabilityOptions.find(opt => opt.value === profile.availability)?.label}
+                </span>
               </div>
             </div>
           </div>
@@ -91,20 +151,57 @@ const ProfileSection = () => {
               </div>
             </div>
 
+            {/* Availability Status Selector */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Availability Status</label>
+              <div className="flex flex-wrap gap-2">
+                {availabilityOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setProfile({...profile, availability: option.value})}
+                    className={`px-4 py-2 rounded-lg border ${profile.availability === option.value 
+                      ? `${option.color} border-current` 
+                      : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'}`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Skills Management */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Skills</label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-3">
                 {profile.skills.map((skill, index) => (
                   <div key={index} className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full flex items-center">
                     {skill}
-                    <button className="ml-2 text-indigo-400 hover:text-indigo-600">
+                    <button 
+                      onClick={() => removeSkill(skill)}
+                      className="ml-2 text-indigo-400 hover:text-indigo-600"
+                    >
                       <FiX size={14} />
                     </button>
                   </div>
                 ))}
-                <button className="flex items-center text-indigo-600">
+              </div>
+              
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newSkill}
+                  onChange={(e) => setNewSkill(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Add a new skill"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                />
+                <button 
+                  onClick={addSkill}
+                  className="flex items-center bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                >
                   <FiPlus size={16} className="mr-1" />
-                  Add Skill
+                  Add
                 </button>
               </div>
             </div>

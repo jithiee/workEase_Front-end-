@@ -29,7 +29,7 @@ const Sidebar = ({ activeTab, setActiveTab, mobileOpen, setMobileOpen }) => {
 
       <div className={`fixed inset-y-0 left-0 transform ${mobileOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out bg-uniqueBlue text-white w-64 z-40`}>
         <div className="flex items-center justify-center h-16 px-4 border-b border-gray-300">
-          <h1 className="text-xl font-bold">ProBook</h1>
+          <h1 className="text-xl font-bold">WorkEase</h1>
         </div>
         <nav className="mt-8">
           {navItems.map((item) => (
@@ -39,7 +39,7 @@ const Sidebar = ({ activeTab, setActiveTab, mobileOpen, setMobileOpen }) => {
                 setActiveTab(item.tab);
                 setMobileOpen(false);
               }}
-              className={`flex items-center w-full px-6 py-3 text-left ${activeTab === item.tab ? 'bg-[#09a5f1] shadow-sm bo' : 'hover:bg-indigo-600'} transition-colors duration-200`}
+              className={`flex items-center w-full px-6 py-3 text-left ${activeTab === item.tab ? 'bg-[#09a5f1] shadow-sm bo' : 'hover:bg-indigo-700'} transition-colors duration-200`}
             >
               <span className="mr-3">{item.icon}</span>
               {item.label}
